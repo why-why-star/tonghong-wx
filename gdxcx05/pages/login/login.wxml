@@ -1,0 +1,5 @@
+<!--pages/login/login.wxml-->
+<text>登陆</text>
+
+<button type="primary" bindtap="getUserProfile">用户登陆</button>
+<!-- <button type="primary" bindtap="toIndex">跳转</button> -->

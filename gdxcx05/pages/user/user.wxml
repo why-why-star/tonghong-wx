@@ -1,0 +1,64 @@
+<form reportSubmit bindsubmit="submitFormId">
+  <view class="header">
+    <view class="user" hoverClass="none">
+      <view class="user_box">
+        <view catchtap="previewImage" class="logo">
+          <image src="{{userInfo.avatarUrl}}"></image>
+          <view class="cu-tag badge {{male==1?'icon-male bg-blue':'icon-female bg-pink'}}"></view>
+        </view>
+        <block>
+          <view class="user_info">
+            <view class="user_name">
+              <view style="white-space:pre-wrap">
+                {{userInfo.nickName}}
+                登录账号:{{name}}
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 功能列表 -->
+  <view class="nav">
+    <button bindtap="chooseGeren" class="item" style="width: auto;">
+      <view class='wallet'>
+        <text class='icon-location icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <text>我的手机号:19178295628</text>
+      </view>
+      <view class="icon">
+        <text class='icon-right'></text>
+      </view>
+    </button>
+
+    <button bindtap="chooseGeren" class="item" style="width: auto;">
+      <view class='wallet'>
+        <text class='icon-location icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <text>我的地址:桂林电子科技大学花江校区</text>
+      </view>
+    </button>
+    <button bindtap="chooseGeren" class="item" style="width: auto;">
+      <view class='wallet'>
+        <text class='icon-location icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <text>我的班级:302</text>
+      </view>
+    </button>
+    <button bindtap="chooseGeren" class="item" style="width: auto;">
+      <view class='wallet'>
+        <text class='icon-location icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <text>关于云课堂</text>
+      </view>
+    </button>
+    <button class="item" formType="submit" hoverClass="none" openType="contact"style="width: auto;">
+      <view class='wallet'>
+        <text class='icon-service icon'></text>
+        <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+        <text>联系客服</text>
+      </view>
+    </button>
+  </view>
+</form>

@@ -1,0 +1,24 @@
+<!--pages/course/course.wxml-->
+
+
+<view class="content">
+  <text>课程列表</text>
+
+  <block wx:for="{{init.kc.data}}">
+
+    <view class="courseLine" bindtap="showchapter" data-courseId="{{item.id}}">
+      <!-- 图片 -->
+      <view class="faceImg">
+        <image class="fimg" src="http://localhost:8001{{item.faceImg}}" />
+      </view>
+      <!-- 课程信息 -->
+      <view class="courseInfo">
+        <view style="margin:20rpx 0;">{{item.name}}</view>
+        <view style="font-size: 31rpx;color:#bbb5b5">讲师： {{item.teacherName}}</view>
+        <view style="margin:10rpx 0;font-size: 31rpx;color:#bbb5b5">课时：{{item.ks}}</view>        
+        <view style="margin:10rpx 0;font-size: 31rpx;color:#bbb5b5">讲师id：{{item.teacherId}}</view>
+      </view>
+    </view>
+
+  </block>
+</view>

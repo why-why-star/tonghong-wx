@@ -1,0 +1,35 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tonghongcloud?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    #上传文件总的最大值
+  servlet:
+    multipart:
+      # 启用
+      enabled: true
+      # 上传文件单个限制
+      max-file-size: 5000GB
+      # 总限制
+      max-request-size: 50000GB
+
+#配置mapper xml文件的路径
+mybatis-plus:
+  mapper-locations=classpath: mapper/*.xml
+  #mybatis日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#上传物理路径
+file:
+  upload:
+    path:  E:/Desktop/微信/项目资源/
+    #虚拟路径
+    relative: /files/**
+

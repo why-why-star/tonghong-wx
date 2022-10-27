@@ -1,0 +1,28 @@
+/* pages/chapter/chapter.wxss */
+
+.chapters{
+  height:90rpx;
+  border-bottom: 3rpx solid rgb(211, 206, 206);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chapterIcon{
+  flex-grow:1;
+  /* border: 1rpx solid green; */
+  
+}
+.chapterName{
+  flex-grow:5;
+  /* border: 1rpx solid blue; */
+  font-size: 32rpx;
+  font-weight: 500;
+}
+.chapterStatus{
+  flex-grow:1;
+  /* border: 1rpx solid red; */
+  text-align: right;
+  font-size: 32rpx;
+  font-weight: 500;
+}

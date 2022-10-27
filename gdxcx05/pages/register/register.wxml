@@ -1,0 +1,29 @@
+<!--pages/login/login.wxml-->
+<view class="content">
+
+  <view class="loginHead">
+    请完善个人信息
+  </view>
+  <view class="loginForm">
+
+    <view class="loginView">
+
+      <view style="text-align: center;color:#BB9093;font-size: 55rpx;font-weight: 600;height:70rpx">通 鸿 云 课 堂</view>
+      <form catchsubmit="formSubmit" catchreset="formReset">
+        <view>
+          <input type="text" name="name" placeholder="请输入个人账号" value="{{name}}" />
+        </view>
+        <view>
+          <input type="password" name="password" placeholder="请输入登陆密码" value="{{password}}"/>
+        </view>
+   
+        <button style="width:100%;margin-top: 20rpx;background:#EB6979;color:#fff;height:70rpx" form-type="submit">登陆</button>
+      </form>
+    </view>
+
+  </view>
+  <view class="loginCopy">
+ 
+  </view>
+
+</view>

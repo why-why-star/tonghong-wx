@@ -1,0 +1,9 @@
+<view style="padding:20rpx;">
+  <block wx:for="{{chapters}}">
+    <view class="chapters" bindtap="bfvideo" data-videourl="{{item.video}}">
+      <view class="chapterIcon"><image style="width:40rpx;height:40rpx;" src="{{chapterIcon}}"/></view>
+      <view class="chapterName">{{item.name}} {{item.info}}</view>
+      <view class="chapterStatus">{{item.statusInfo}}</view>
+    </view>
+  </block>
+</view>
