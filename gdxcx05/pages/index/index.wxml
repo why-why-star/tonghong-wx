@@ -29,7 +29,7 @@
     <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{item}};"></view>{{index}}
   </view> -->
   <!-- 课程 -->
-  <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:auto;width:100%;display: {{showview[0]}};">
+  <view style="margin-top: 10px;background-color: rgb(255, 234, 234);height:auto;width:100%;display: {{showview[0]}};">
     <view class="first-courses">
       <view class="first-line">
         <image class="course-img" src="http://localhost:8001{{init.kc.data[0].faceImg}}" />
@@ -42,7 +42,7 @@
         <image class="course-img" src="http://localhost:8001{{init.kc.data[1].faceImg}}" />
         <view class="wz-info" class="bjrs">{{init.kc.data[1].name}}</view>
         <view class="info">
-          <view class="wz-info">讲师: {{init.kc[1].data.teacherName}}</view>
+          <view class="wz-info">讲师: {{init.kc.data[1].teacherName}}</view>
         </view>
       </view>
     </view>
@@ -64,10 +64,10 @@
     </view>
   </view>
   <!-- 班级 -->
-  <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:auto;width:100%;display: {{showview[1]}};">
+  <view style="margin-top: 10px;height:auto;width:100%;display: {{showview[1]}};">
     <block wx:for="{{init.bj}}" wx:key="index">
-      <view style="height: 1px;width: auto;background-color: rgb(231, 133, 133);"></view>
-      <button style="background-color: rgb(230, 175, 175);width:100%;">{{item.name}}的班级 课号： {{item.id}}</button>
+      <view style="height: 1px;width: auto;background-color: rgb(221, 202, 202);"></view>
+      <button style="background-color: rgb(252, 233, 233);width:100%;">{{item.name}}的班级 课号： {{item.id}}</button>
     </block>
   </view>
   <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[2]}};">{{showview}}</view>

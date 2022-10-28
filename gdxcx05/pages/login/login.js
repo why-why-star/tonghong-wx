@@ -1,4 +1,3 @@
-
 let app = getApp();
 // pages/login/login.js
 Page({
@@ -20,34 +19,47 @@ Page({
       console.log('没有token或token被清除，请先使用微信登录')
     } else {
       console.log("有token");
-      console.log("token→"+token);
+      console.log("token→" + token);
       //验证token（pass）
-
-      var name = wx.getStorageSync('name');
-      var password = wx.getStorageSync('password');
-      if(typeof (name) == "undefined" || name == ""||typeof (password) == "undefined" || password == ""){
-        //未保存有这些信息，第一次使用或者被清除，跳转云课堂登录
-        wx.navigateTo({
-          url: '/pages/register/register',
-        })
-      }
-      //有token，有邮箱和密码，直接进入主界面
-      wx.switchTab({
-        url: '/pages/index/index?token='+token,
+      wx.request({
+        url: 'http://localhost:8001/checktoken?token=' + token,
+        success: res => {
+          console.log("http://localhost:8001/checktoken?token=" + token)
+          console.log("我要开始解析了")
+          console.log(res.data);
+          if(res.data==false){
+            
+          }else{
+            var name = wx.getStorageSync('name');
+            var password = wx.getStorageSync('password');
+            if (typeof (name) == "undefined" || name == "" || typeof (password) == "undefined" || password == "") {
+              //未保存有这些信息，第一次使用或者被清除，跳转云课堂登录
+              wx.navigateTo({
+                url: '/pages/register/register',
+              })
+            }
+            //有token，有邮箱和密码，直接进入主界面
+            wx.switchTab({
+              url: '/pages/index/index?token=' + token,
+            })
+          }
+        }
       })
       
+
+
     }
   },
-  toIndex(){
+  toIndex() {
     wx.navigateTo({
       url: '/pages/index/index',
     })
   },
-  getUserProfile(){
+  getUserProfile() {
     wx.getUserProfile({
       desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log('用户数据→'+res);
+        console.log('用户数据→' + res);
         this.login(res.userInfo);
         this.setData({
           userInfo: res.userInfo
@@ -56,9 +68,9 @@ Page({
     })
   },
 
-  login(uinfo){
+  login(uinfo) {
     wx.login({
-      success (res) {
+      success(res) {
         if (res.code) {
           console.log(res.code);
           console.log(uinfo.nickName);
@@ -69,10 +81,10 @@ Page({
             url: 'http://localhost:8001/createOpenKey',
             data: {
               code: res.code,
-              nickname:uinfo.nickName,
-              avatarUrl:uinfo.avatarUrl
+              nickname: uinfo.nickName,
+              avatarUrl: uinfo.avatarUrl
             },
-            success: res=>{
+            success: res => {
               console.log("创建tooken成功并返回数据")
               console.log(res.data);
               app.globalData.userInfo = uinfo;
@@ -82,7 +94,7 @@ Page({
               // var token =  wx.getStorageSync('auth-code')
               // console.log(token);
               wx.navigateTo({
-                url: '/pages/register/register?token='+res.data,
+                url: '/pages/register/register?token=' + res.data,
               })
             }
           })

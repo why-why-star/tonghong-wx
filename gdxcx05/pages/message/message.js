@@ -1,38 +1,28 @@
 // pages/demo02/demo02.js
 const backgroundAudioManager = wx.getBackgroundAudioManager()
 Page({
-  
+
   /**
    * 页面的初始数据
    */
   data: {
-    imgs:['http://localhost:8000/videos/wximages/ba.jpg','http://localhost:8000/videos/wximages/bc.jpg','http://localhost:8000/videos/wximages/bz.jpg']
+    userInfo : wx.getStorageSync('uinfo'),
+    init: {
+      messagelist: [{
+        text: "文本1",
+        time: "key1"
+      }],
+      status:""
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    // wx.getStorageSync({
-    //   key: 'user',
-    //   success (res) {
-    //     console.log("-----------"+res.data.name+","+res.data.password)
-    //   },
-    //   fail(res){
-    //     wx.reLaunch({
-    //       url: '/pages/demo03/demo03',
-    //     })
-    //   }
-    // })
+    
+    this.getinit();
 
-  var user = wx.getStorageSync('user')
-   if(user.name == '666' && user.password){
-      console.log("-----------"+user.name+","+user.password)
-    }
-
-    console.log("直接执行了....");
-
-   
   },
 
   /**
@@ -46,14 +36,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-   
-
-    backgroundAudioManager.title = '此时此刻'
-    backgroundAudioManager.epname = '此时此刻'
-    backgroundAudioManager.singer = '许巍'
-    backgroundAudioManager.coverImgUrl = 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
-    // 设置了 src 之后会自动播放
-    backgroundAudioManager.src = 'http://localhost:8000/videos/haikuotiankong.mp3'
 
   },
 
@@ -93,5 +75,22 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  getinit(){
+    let that = this;
+    var user =  wx.getStorageSync('uinfo')
+    // console.log(that.userInfo);
+    wx.request({
+      url: 'http://localhost:8001/Wxdata/getmessagebynickname?nickName='+user.nickName , //仅为示例，并非真实的接口地址
+      success (res) {
+        console.log(res.data)
+        that.setData({
+          init:res.data
+        })
+      }
+    })
   }
+
+
 })
