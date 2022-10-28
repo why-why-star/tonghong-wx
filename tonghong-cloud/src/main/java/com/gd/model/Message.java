@@ -1,114 +1,58 @@
 package com.gd.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.util.Date;
-
-/**
- * description: Course <br>
- * date: 2022-10-13 10:39 <br>
- * author: DaTao <br>
- * version: 1.0 <br>
- */
 public class Message {
+    int id;
+    String text;
+    String time;
+    int userid;
 
-    private Integer id;
-    private String name;
-    private Integer teacherId;
-    private String teacherName;
-    private String attribute;
-    private String faceImg;
-    private Integer ks;
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date addTime;
-
-    public Course() {
+    public Message() {
     }
 
-    public Course(Integer id, String name, Integer teacherId, String attribute, String faceImg, Date addTime) {
-        this.id = id;
-        this.name = name;
-        this.teacherId = teacherId;
-        this.attribute = attribute;
-        this.faceImg = faceImg;
-        this.addTime = addTime;
+    public Message(String text, int userid) {
+        this.text = text;
+        this.userid = userid;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public Integer getTeacherId() {
-        return teacherId;
+    public String getTime() {
+        return time;
     }
 
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    public String getAttribute() {
-        return attribute;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setAttribute(String attribute) {
-        this.attribute = attribute;
-    }
-
-    public String getFaceImg() {
-        return faceImg;
-    }
-
-    public void setFaceImg(String faceImg) {
-        this.faceImg = faceImg;
-    }
-
-    public Date getAddTime() {
-        return addTime;
-    }
-
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
-    }
-
-    public Integer getKs() {
-        return ks;
-    }
-
-    public void setKs(Integer ks) {
-        this.ks = ks;
-    }
-
-    public String getTeacherName() {
-        return teacherName;
-    }
-
-    public void setTeacherName(String teacherName) {
-        this.teacherName = teacherName;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "Message{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", teacherId=" + teacherId +
-                ", teacherName='" + teacherName + '\'' +
-                ", attribute='" + attribute + '\'' +
-                ", faceImg='" + faceImg + '\'' +
-                ", ks=" + ks +
-                ", addTime=" + addTime +
+                ", text='" + text + '\'' +
+                ", time='" + time + '\'' +
+                ", userid=" + userid +
                 '}';
     }
 }

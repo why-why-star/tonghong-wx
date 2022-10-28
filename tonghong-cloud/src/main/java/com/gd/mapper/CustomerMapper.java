@@ -1,6 +1,7 @@
 package com.gd.mapper;
 
 import com.gd.model.Customer;
+import com.gd.model.Message;
 import com.gd.model.Teacher;
 import org.apache.ibatis.annotations.*;
 
@@ -45,12 +46,23 @@ public interface CustomerMapper {
 
 
     //UPDATE runoob_tbl SET runoob_title='学习 C++' WHERE runoob_id=3;
-    @Insert("update customer set `name`=#{customer.name} ,password = #{customer.password} where nickname=#{customer.nickname}")
+    @Update("update customer set `name`=#{customer.name} ,password = #{customer.password} where nickname=#{customer.nickname}")
     void fill(@Param("customer") Customer customer);
 
 
 //    @Select("select * from customer where nickname = #{customer.nickname} and name=#{customer.name} and password=#{#{customer.password}}   ")
 //    Customer getuser(@Param("customer") Customer customer);
+
+    @Insert("insert into message(text,userid) value(#{message.text},#{message.userid})")
+    void addmessage(@Param("message") Message message);
+
+
+    @Select("select * from message where userid=#{userid} order by id desc")
+    List<Message> getmessage(int userid);
+
+    @Select("select id from customer where nickname=#{nickname}")
+    int getidbynickname(String nickname);
+
 
 
 }

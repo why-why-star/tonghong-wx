@@ -241,6 +241,7 @@ export default ({
                 console.log(reason)
                 message.error("消息发送失败")
             })
+            console.log("我要更新消息了")
             that.messageupdata();
             console.log('Success:', values);
         },

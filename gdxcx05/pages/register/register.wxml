@@ -2,7 +2,7 @@
 <view class="content">
 
   <view class="loginHead">
-    请完善个人信息
+    请先登录,第一次登录为注册
   </view>
   <view class="loginForm">
 

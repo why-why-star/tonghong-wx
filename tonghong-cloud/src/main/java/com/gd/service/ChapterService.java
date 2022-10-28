@@ -59,6 +59,11 @@ public class ChapterService {
         chapterMapper.add(chapter);
     }
 
+    public void delete(Integer id) {
+        chapterMapper.delete(id);
+    }
+
+
     public void update(Chapter chapter) {
         chapterMapper.update(chapter);
     }

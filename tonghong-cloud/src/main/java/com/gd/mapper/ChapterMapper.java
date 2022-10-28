@@ -1,10 +1,7 @@
 package com.gd.mapper;
 
 import com.gd.model.Chapter;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -35,6 +32,7 @@ public interface ChapterMapper {
     //
     void update(Chapter chapter);
 
+    @Delete("delete from chapter where id=#{id}")
     void delete(Integer id);
 
     @Select("select * from chapter where course_id=#{course_id}")

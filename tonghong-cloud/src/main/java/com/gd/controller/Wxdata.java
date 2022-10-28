@@ -5,6 +5,7 @@ import com.gd.model.Pages;
 import com.gd.model.Response;
 import com.gd.model.Teacher;
 import com.gd.service.CourseService;
+import com.gd.service.CustomerService;
 import com.gd.service.TeacherService;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,6 +39,8 @@ public class Wxdata {
     @Resource
     private CourseService courseService;
 
+    @Resource
+    private CustomerService customerService;
 
     @RequestMapping("/index")
     public Map<String, Object> index() {
@@ -53,6 +56,14 @@ public class Wxdata {
     public Map<String, Object> course() {
         Map<String, Object> map = new HashMap<>();
         map.put("kc", courseService.getPagers(1, 10000,"",""));
+        return map;
+    }
+
+    @RequestMapping("/getmessagebynickname")
+    public Map<String, Object> getmessagebynickname(String nickName) {
+        int userid =  customerService.getidbynickname(nickName);
+        Map<String, Object> map = new HashMap<>();
+        map.put("messagelist", customerService.getmessage(userid));
         return map;
     }
 

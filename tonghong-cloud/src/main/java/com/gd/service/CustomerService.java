@@ -2,6 +2,7 @@ package com.gd.service;
 
 import com.gd.mapper.CustomerMapper;
 import com.gd.model.Customer;
+import com.gd.model.Message;
 import com.gd.model.Pages;
 import com.gd.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,8 +121,11 @@ public class CustomerService {
         return false;
     }
 
+    public void addmessage(Message message){customerMapper.addmessage(message);}
+
+    public List<Message> getmessage(int userid){return customerMapper.getmessage(userid);}
 
 
-
+    public int getidbynickname(String nickname){return customerMapper.getidbynickname(nickname);}
 
 }

@@ -60,4 +60,21 @@ public class CustomerController {
         tempcustomer.setPassword(password);
         customerService.update(tempcustomer);
     }
+
+
+    @GetMapping("/message/add")
+    public void addmessage(String text,int userid){
+        System.out.println("我给:"+userid+"发送:"+text);
+        Message message = new Message(text,userid);
+        customerService.addmessage(message);
+    }
+
+    @GetMapping("/message/get")
+    public List<Message> getmessage(int userid){
+        System.out.println("我需要:"+userid+"的消息");
+        return customerService.getmessage(userid);
+    }
+
+
+
 }

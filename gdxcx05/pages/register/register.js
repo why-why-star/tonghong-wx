@@ -23,8 +23,8 @@ Page({
     console.log(e.detail.value)
     wx.setStorageSync('name', e.detail.value['name']);
     wx.setStorageSync('password', e.detail.value['password']);
-
     var userInfo = wx.getStorageSync('uinfo');
+
     wx.request({
       url: 'http://localhost:8001/login',
       data: {
@@ -37,6 +37,10 @@ Page({
         console.log(res.data);
         if (res.data) {
           console.log("登录成功")
+          wx.setStorageSync('name', e.detail.value['name']);
+          wx.setStorageSync('password', e.detail.value['password']);
+          console.log("成功:当前用户信息"+wx.getStorageSync('uinfo').nickName);
+          console.log("成功:当前用户信息"+wx.getStorageSync('name'))
           wx.switchTab({
             url: '/pages/index/index',
           })
@@ -45,6 +49,8 @@ Page({
           console.log('登录失败')
           this.password = "";
           wx.setStorageSync('password', "");
+          console.log("失败:当前用户信息"+wx.getStorageSync('uinfo').nickName)
+          console.log("失败:当前用户信息"+wx.getStorageSync('name'))
         }
         var token = wx.getStorageSync('auth-code');
         // if (typeof (res.data) == "undefined" || res.data == "") {

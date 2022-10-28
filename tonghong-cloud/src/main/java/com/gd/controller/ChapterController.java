@@ -60,6 +60,13 @@ public class ChapterController {
     }
 
 
+    @GetMapping("/delete")
+    public void delete(Integer id){
+
+        chapterService.delete(id);
+    }
+
+
     /**
      * 上传课程封面
      * @param file

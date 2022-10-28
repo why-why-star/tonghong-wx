@@ -13,8 +13,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(wx.getStorageSync('uinfo')),
-    console.log(wx.getStorageSync('name'))
+    console.log("我要加载个人信息")
+    this.setData({
+      userInfo:wx.getStorageSync('uinfo')
+    });
+    this.setData({
+      name:wx.getStorageSync('name')
+    })
   },
 
   /**
