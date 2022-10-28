@@ -69,19 +69,19 @@ public class ChapterController {
 
     /**
      * 上传课程封面
-     * @param file
+//     * @param file
      * @return
      * @throws IOException
      */
     @RequestMapping(value="/upload",method = RequestMethod.POST)
-    public Response upload(MultipartFile file) throws IOException {
+    public Response upload(MultipartFile video) throws IOException {
 
         //获取文件原名
-        String fileName = file.getOriginalFilename();
+        String fileName = video.getOriginalFilename();
         //创建要上传的文件对象
         File newFile = new File(filePath,fileName);
         //将文件copy到目标地址
-        file.transferTo(newFile);
+        video.transferTo(newFile);
 
         String filePath = fileRelativePath.replace("*","")+fileName;
 
@@ -92,6 +92,12 @@ public class ChapterController {
     @RequestMapping(value="/getlistbyid")
     public List<Chapter> getlistbyid(int courseId){
         return chapterService.getlistbyid(courseId);
+    }
+
+    @RequestMapping(value="/update")
+    public void update(int id,String name,String info,String video){
+        Chapter chapter =new Chapter(id,name,info,video);
+        chapterService.update(chapter);
     }
 
 

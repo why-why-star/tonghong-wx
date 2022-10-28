@@ -28,6 +28,13 @@ public class Chapter {
         this.video = video;
     }
 
+    public Chapter(Integer id, String name, String info, String video) {
+        this.id = id;
+        this.name = name;
+        this.info = info;
+        this.video = video;
+    }
+
     public Chapter(Integer id, String name, Integer courseId, String info, String video, Integer status) {
         this.id = id;
         this.name = name;

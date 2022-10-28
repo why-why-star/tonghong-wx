@@ -71,4 +71,5 @@ public class ChapterService {
     public List<Chapter> getlistbyid(int course_id){
         return chapterMapper.getlistbyid(course_id);
     }
+
 }

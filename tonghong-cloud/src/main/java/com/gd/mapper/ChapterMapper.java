@@ -29,8 +29,9 @@ public interface ChapterMapper {
     void add(@Param("chapter")Chapter chapter);
 
 
-    //
-    void update(Chapter chapter);
+    @Update("update chapter set name=#{chapter.name},info=#{chapter.info}," +
+            "video=#{chapter.video} where id=#{chapter.id}")
+    void update(@Param("chapter")Chapter chapter);
 
     @Delete("delete from chapter where id=#{id}")
     void delete(Integer id);
