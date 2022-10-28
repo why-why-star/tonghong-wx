@@ -6,7 +6,8 @@ Page({
    */
   data: {
     userInfo : wx.getStorageSync('uinfo'),
-    name:wx.getStorageSync('name')
+    name:wx.getStorageSync('name'),
+    class:0
   },
 
   /**
@@ -33,7 +34,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.setData({
+      class:wx.getStorageSync('class')
+    })
+     
   },
 
   /**

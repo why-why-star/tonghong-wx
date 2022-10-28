@@ -18,60 +18,80 @@
       </view>
     </scroll-view>
   </view>
-  <swiper style="height:0px" current="{{select}}" duration="200" bindchange="activeSw" class="box">
-    <swiper-item wx:for="{{sortList}}" wx:key="index">
-      <view class="place">
+
+
+  <swiper style="height:{{height}}px" current="{{select}}" duration="300" bindchange="activeSw">
+
+    <!-- 第一页 -->
+    <swiper-item style="height: 100vh;">
+      <!-- 课程 -->
+      <view style="margin-top: 10px;background-color: rgb(255, 234, 234);height:auto;width:100%;display: {{showview[0]}};">
+        <view class="first-courses">
+          <view class="first-line">
+            <image class="course-img" src="http://localhost:8001{{init.kc.data[0].faceImg}}" />
+            <view class="wz-info" class="bjrs">{{init.kc.data[0].name}}</view>
+            <view class="info">
+              <view class="wz-info">讲师: {{init.kc.data[0].teacherName}}</view>
+            </view>
+          </view>
+          <view class="first-line">
+            <image class="course-img" src="http://localhost:8001{{init.kc.data[1].faceImg}}" />
+            <view class="wz-info" class="bjrs">{{init.kc.data[1].name}}</view>
+            <view class="info">
+              <view class="wz-info">讲师: {{init.kc.data[1].teacherName}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="first-courses">
+          <view class="first-line">
+            <image class="course-img" src="http://localhost:8001{{init.kc.data[2].faceImg}}" />
+            <view class="wz-info" class="bjrs">{{init.kc.data[2].name}}</view>
+            <view class="info">
+              <view class="wz-info">讲师: {{init.kc.data[2].teacherName}}</view>
+            </view>
+          </view>
+          <view class="first-line">
+            <image class="course-img" src="http://localhost:8001{{init.kc.data[3].faceImg}}" />
+            <view class="wz-info" class="bjrs">{{init.kc.data[3].name}}</view>
+            <view class="info">
+              <view class="wz-info">讲师: {{init.kc.data[3].teacherName}}</view>
+            </view>
+          </view>
+        </view>
       </view>
     </swiper-item>
+
+    <!-- 第二页 -->
+    <swiper-item style="height: 100vh;">
+      <!-- 班级 -->
+      <view style="margin-top: 10px;height:auto;width:100%;display: {{showview[1]}};">
+        <view wx:for="{{init.bj}}" wx:key="index" bindtap="showchapter" data-courseId="{{item.id}}">
+          <view style="height: 1px;width: auto;background-color: rgb(221, 202, 202);"></view>
+          <button style="background-color: rgb(252, 233, 233);width:100%;" >{{item.name}}的班级 课号： {{item.id}}</button>
+        </view>
+      </view>
+    </swiper-item>
+
+    <!-- 第三页 -->
+    <swiper-item style="height: 100vh;">
+      <view class="box" style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[2]}};">暂无内容</view>
+    </swiper-item>
+
+    <!-- 第四页 -->
+    <swiper-item style="height: 100vh;">
+      <view class="box"  style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[3]}};">暂无内容</view>
+    </swiper-item>
+
+    <swiper-item style="height: 100vh;">
+      <view class="box" style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[4]}};">暂无内容</view>
+    </swiper-item>
+
   </swiper>
 
-  <!-- <view wx:for="{{showview}}" >
-    <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{item}};"></view>{{index}}
-  </view> -->
-  <!-- 课程 -->
-  <view style="margin-top: 10px;background-color: rgb(255, 234, 234);height:auto;width:100%;display: {{showview[0]}};">
-    <view class="first-courses">
-      <view class="first-line">
-        <image class="course-img" src="http://localhost:8001{{init.kc.data[0].faceImg}}" />
-        <view class="wz-info" class="bjrs">{{init.kc.data[0].name}}</view>
-        <view class="info">
-          <view class="wz-info">讲师: {{init.kc.data[0].teacherName}}</view>
-        </view>
-      </view>
-      <view class="first-line">
-        <image class="course-img" src="http://localhost:8001{{init.kc.data[1].faceImg}}" />
-        <view class="wz-info" class="bjrs">{{init.kc.data[1].name}}</view>
-        <view class="info">
-          <view class="wz-info">讲师: {{init.kc.data[1].teacherName}}</view>
-        </view>
-      </view>
-    </view>
-    <view class="first-courses">
-      <view class="first-line">
-        <image class="course-img" src="http://localhost:8001{{init.kc.data[2].faceImg}}" />
-        <view class="wz-info" class="bjrs">{{init.kc.data[2].name}}</view>
-        <view class="info">
-          <view class="wz-info">讲师: {{init.kc.data[2].teacherName}}</view>
-        </view>
-      </view>
-      <view class="first-line">
-        <image class="course-img" src="http://localhost:8001{{init.kc.data[3].faceImg}}" />
-        <view class="wz-info" class="bjrs">{{init.kc.data[3].name}}</view>
-        <view class="info">
-          <view class="wz-info">讲师: {{init.kc.data[3].teacherName}}</view>
-        </view>
-      </view>
-    </view>
-  </view>
-  <!-- 班级 -->
-  <view style="margin-top: 10px;height:auto;width:100%;display: {{showview[1]}};">
-    <block wx:for="{{init.bj}}" wx:key="index">
-      <view style="height: 1px;width: auto;background-color: rgb(221, 202, 202);"></view>
-      <button style="background-color: rgb(252, 233, 233);width:100%;">{{item.name}}的班级 课号： {{item.id}}</button>
-    </block>
-  </view>
-  <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[2]}};">{{showview}}</view>
-  <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[3]}};">{{showview}}</view>
-  <view style="margin-top: 10px;background-color: rgb(230, 175, 175);height:50vh;width:100%;display: {{showview[4]}};">{{showview}}</view>
+
+
+
+
+
 
 </view>

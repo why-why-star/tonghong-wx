@@ -43,7 +43,7 @@
       <view class='wallet'>
         <text class='icon-location icon'></text>
         <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-        <text>我的班级:302</text>
+        <text>我的班级:{{class}}</text>
       </view>
     </button>
     <button bindtap="chooseGeren" class="item" style="width: auto;">

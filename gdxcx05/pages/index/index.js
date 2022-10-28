@@ -24,13 +24,13 @@ Page({
         name: '组群'
       }
     ],
-    showview:["one","none","none","none","none"],
-    init:{
-      kc:[],
-      bj:[],
-      cp:[],
-      px:[],
-      zq:[]
+    showview: ["one", "two", "three", "four", "five"],
+    init: {
+      kc: [],
+      bj: [],
+      cp: [],
+      px: [],
+      zq: []
     }
   },
 
@@ -38,7 +38,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.watchHeight();
+    this.watchHeight()
     this.getinit()
   },
 
@@ -150,67 +150,79 @@ Page({
   },
 
   changeView(index) {
-    console.log("现在是第"+index+"页面")
-    switch (index) {
-      case 0:
-        this.showview=["one","none","none","none","none"]
-        console.log("??")
-        this.setData({
-          showview : this.showview
-        });
-        break;
-      case 1:
-        this.showview=["none","two","none","none","none"]
-        console.log("??")
-        this.setData({
-          showview : this.showview
-        });
-        break;
-      case 2:
-        this.showview=["none","none","three","none","none"]
-        console.log("??")
-        this.setData({
-          showview : this.showview
-        });
-        break;
-      case 3:
-        this.showview=["none","none","none","four","none"]
-        console.log("??")
-        this.setData({
-          showview : this.showview
-        });
-        break;
-      case 4:
-        this.showview=["none","none","none","none","five"]
-        console.log("??")
-        this.setData({
-          showview : this.showview
-        });
-        break;
-      default:
-        // statements // 如果没有与表达式相同的值，则执行该代码
-        break;
-    } 
-    var list = this.data.placeList
-    list.push(1, 2, 3, 4)
-    this.setData({
-      placeList: list
-    })
+
+    // //原来的
+    // console.log("现在是第" + index + "页面")
+    // switch (index) {
+    //   case 0:
+    //     this.showview = ["one", "none", "none", "none", "none"]
+    //     console.log("??")
+    //     this.setData({
+    //       showview: this.showview
+    //     });
+    //     break;
+    //   case 1:
+    //     this.showview = ["none", "two", "none", "none", "none"]
+    //     console.log("??")
+    //     this.setData({
+    //       showview: this.showview
+    //     });
+    //     break;
+    //   case 2:
+    //     this.showview = ["none", "none", "three", "none", "none"]
+    //     console.log("??")
+    //     this.setData({
+    //       showview: this.showview
+    //     });
+    //     break;
+    //   case 3:
+    //     this.showview = ["none", "none", "none", "four", "none"]
+    //     console.log("??")
+    //     this.setData({
+    //       showview: this.showview
+    //     });
+    //     break;
+    //   case 4:
+    //     this.showview = ["none", "none", "none", "none", "five"]
+    //     console.log("??")
+    //     this.setData({
+    //       showview: this.showview
+    //     });
+    //     break;
+    //   default:
+    //     // statements // 如果没有与表达式相同的值，则执行该代码
+    //     break;
+    // }
+    // var list = this.data.placeList
+    // list.push(1, 2, 3, 4)
+    // this.setData({
+    //   placeList: list
+    // })
+
+    // // 原来的
+
+
     this.watchHeight();
     this.onLoad()
   },
 
-  getinit(){
+  getinit() {
     let that = this;
     wx.request({
       url: 'http://localhost:8001/Wxdata/index', //仅为示例，并非真实的接口地址
-      success (res) {
+      success(res) {
         console.log(res.data)
         that.setData({
-          init:res.data
+          init: res.data
         })
       }
     })
+  },
+
+  showchapter(e){
+    console.log(e);
+    console.log(e.currentTarget.dataset.courseid) 
+    wx.setStorageSync('class', e.currentTarget.dataset.courseid);
   }
 
 })
